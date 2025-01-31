@@ -8,18 +8,31 @@
     <link href="bootstrap.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="assets/logo.png">
+
+    <script>
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const wrongPasword = urlParams.get('wrongPasword');
+
+            if (wrongPasword == 'true') {
+                document.getElementById('wrongPaswordNotification').style.display = 'block';
+            }
+        }
+    </script>
 </head>
 
 <body>
     <div class="login">
         <div class="login-content">
             <h2 class="w-100 text-center">Login</h1>
-            <form action="authenticate.php" method="post">
-                <input id="username" class="login-element" type="text" name="username" placeholder="Username" required>
-                <input id="password" class="login-element" type="password" name="password" placeholder="Passwort"
-                    required>
-                <input class="w-100 login-button" type="submit" value="Login">
-            </form>
+                <form action="authenticate.php" method="post">
+                    <input id="username" class="login-element" type="text" name="username" placeholder="Username"
+                        required>
+                    <input id="password" class="login-element" type="password" name="password" placeholder="Passwort"
+                        required>
+                    <div id="wrongPaswordNotification">Falscher Username/Passwort</div>
+                    <input class="w-100 login-button" type="submit" value="Login">
+                </form>
         </div>
     </div>
 </body>
@@ -67,6 +80,12 @@
         outline: none;
         border-bottom: 1px solid #05212a;
         margin-bottom: 10px;
+    }
+
+    #wrongPaswordNotification {
+        display: none;
+        color: red;
+        font-weight: bold;
     }
 
     .login-button {

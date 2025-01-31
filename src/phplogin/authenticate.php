@@ -29,10 +29,12 @@ if ($userQuery = $con->prepare('SELECT id, nick_name, password FROM users WHERE 
 			$_SESSION['nickName'] = $nickName;
 			header('Location: home.php');
 		} else {
-			echo 'Incorrect username and/or password!';
+			header('Location: index.html ' . $_SERVER['QUERY_STRING']);
+			exit;
 		}
 	} else {
-		echo 'Incorrect username and/or password!';
+		header('Location: index.html?wrongPasword=true');
+		exit;
 	}
 
 	$userQuery->close();
