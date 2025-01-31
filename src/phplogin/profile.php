@@ -56,6 +56,7 @@ $stmt->close();
 		border-bottom: 1px solid #05212a;
 		margin-bottom: 10px;
 		margin-right: 25px;
+		border-radius: 0;
 	}
 
 	.password-button {
