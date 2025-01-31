@@ -18,6 +18,7 @@
 		height: 60px;
 		width: 100%;
 		border: 0;
+		margin-bottom: 15px;
 	}
 
 	.navtopLink {

@@ -17,7 +17,7 @@ if (!isset($_SESSION['loggedin'])) {
 	<?php include 'header.php'; ?>
 	<div class="container">
 		<h2>Hallo 
-			<?= array_key_exists( 'nickName', $_SESSION) ? $_SESSION['nickName'] : $_SESSION['username'] ?></h2>
+			<?= array_key_exists( 'nickName', $_SESSION) && $_SESSION['nickName'] != '' ? $_SESSION['nickName'] : $_SESSION['username'] ?></h2>
 	</div>
 </body>
 
