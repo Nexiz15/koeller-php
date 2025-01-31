@@ -1,27 +1,79 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <link href="style.css" rel="stylesheet" type="text/css">
     <link href="bootstrap.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="logo.png">
 </head>
+
 <body>
-<div class="login">
-    <h1>Login</h1>
-    <form action="authenticate.php" method="post">
-        <label for="username">
-            <i class="fas fa-user"></i>
-        </label>
-        <input type="text" name="username" placeholder="Username" id="username" required>
-        <label for="password">
-            <i class="fas fa-lock"></i>
-        </label>
-        <input type="password" name="password" placeholder="Passwort" id="password" required>
-        <input type="submit" value="Login">
-    </form>
-</div>
+    <div class="login">
+        <div class="login-content">
+            <h2 class="w-100 text-center">Login</h1>
+            <form action="authenticate.php" method="post">
+                <input id="username" class="login-element" type="text" name="username" placeholder="Username" required>
+                <input id="password" class="login-element" type="password" name="password" placeholder="Passwort"
+                    required>
+                <input class="w-100 login-button" type="submit" value="Login">
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>
+<style>
+    body {
+        background-image: url(assets/login_bg.jpeg);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        background-blend-mode: lighten;
+    }
+
+    @media (min-width: 576px) {
+        body {
+            background-size: cover;
+        }
+    }
+
+    .login {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 180px;
+        max-width: 500px;
+    }
+
+    .login-content {
+        background-color: white;
+        background-blend-mode: lighten;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .login-element {
+        width: 100%;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #05212a;
+        margin-bottom: 10px;
+    }
+
+    .login-button {
+        border: none;
+        height: 35px;
+        background-color: #05212a;
+        color: white;
+        border-radius: 8px;
+    }
+</style>

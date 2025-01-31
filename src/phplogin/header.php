@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="d-flex align-items-center justify-content-between">
 			<a href="home.php">
-				<img src="logo.png" alt="logo" class="logo" />
+				<img src="assets/logo.png" alt="logo" class="logo" />
 			</a>
 			<div>
 				<a class="navtopLink mr-3" href="profile.php"><i class="mr-1 fa-solid fa-user"></i>Profil</a>
