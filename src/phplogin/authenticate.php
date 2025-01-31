@@ -6,9 +6,11 @@ session_start();
 
 $con = mysqli_connect($GLOBALS['DATABASE_HOST'], $GLOBALS['DATABASE_USER'], $GLOBALS['DATABASE_PASS'], $GLOBALS['DATABASE_NAME']);
 if (mysqli_connect_errno()) {
+	$userQuery->close();
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 if (!isset($_POST['username'], $_POST['password'])) {
+	$userQuery->close();
 	exit('Please fill both the username and password fields!');
 }
 
@@ -29,14 +31,14 @@ if ($userQuery = $con->prepare('SELECT id, nick_name, password FROM users WHERE 
 			$_SESSION['nickName'] = $nickName;
 			header('Location: home.php');
 		} else {
-			header('Location: index.html ' . $_SERVER['QUERY_STRING']);
+			header('Location: index.html?wrongPasword=true');
+			$userQuery->close();
 			exit;
 		}
 	} else {
 		header('Location: index.html?wrongPasword=true');
+		$userQuery->close();
 		exit;
 	}
-
-	$userQuery->close();
 }
 ?>

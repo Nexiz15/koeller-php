@@ -1,4 +1,6 @@
 <?php
+require 'config/db_config.php';
+
 $con = mysqli_connect($GLOBALS['DATABASE_HOST'], $GLOBALS['DATABASE_USER'], $GLOBALS['DATABASE_PASS'], $GLOBALS['DATABASE_NAME']);
 if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
@@ -29,14 +31,18 @@ function mapDrinkType($type)
 {
     switch ($type) {
         case "BEER":
-        default:
             return 'Bier';
+        case "ALL_YOU_CAN_DRINK":
+            return 'Saufpartie';
+        default:
+            return 'FALSCHER WERT';
     }
 }
 
-function formatDate($date){
+function formatDate($date)
+{
     $parsedDate = date_create($date);
-    return date_format($parsedDate,"H:i:s d.m.Y");
+    return date_format($parsedDate, "H:i:s d.m.Y");
 }
 
 mysqli_close($con);

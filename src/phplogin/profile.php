@@ -65,7 +65,7 @@ $stmt->close();
 		background-color: #05212a;
 		color: white;
 		border-radius: 8px;
-		min-width: 100px;
+		padding: 0 20px 0 20px;
 
 		&:hover {
 			cursor: pointer;
