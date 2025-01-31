@@ -36,13 +36,12 @@ if (!isset($_SESSION['loggedin'])) {
 				<input class="drink-button" type="submit" value="Saufpartie Hinzufügen">
 			</form>
 		</div>
-		<div class="mb-5">
+		<div class="mb-4">
 			<?php include 'home/drinkTable.php'; ?>
 		</div>
 		<div class="mb-5">
-			<h4>Alle Getränke löschen</h4>
 			<form class="d-flex gap-1 flex-column flex-md-row" action="home/deleteAllDrinks.php" method="post">
-				<input class="drink-button" type="submit" value="Alle Getränk löschen">
+				<input class="drink-button" type="submit" value="Alle Getränke löschen">
 			</form>
 		</div>
 	</div>
