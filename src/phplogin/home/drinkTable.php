@@ -22,6 +22,11 @@ if ($num_rows > 0) {
         echo "<tr>";
         echo "<td>" . mapDrinkType($rows['drink_type']) . "</td>";
         echo "<td>" . formatDate($rows['date_time']) . "</td>";
+        echo "<td>
+            <form class="d-flex gap-1 flex-column flex-md-row" action="home/deleteSingleDrink.php" method="post">
+            				<input class="drink-button" type="submit" value="Alle Getränke löschen">
+            			</form>
+            </td>";
         echo "</tr>";
     }
 }

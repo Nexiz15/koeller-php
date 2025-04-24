@@ -24,14 +24,10 @@ if (!isset($_SESSION['loggedin'])) {
 		<div class="mb-5">
 			<h4>Getränk hinzufügen</h4>
 			<form class="d-flex gap-1 flex-column flex-md-row mb-3" action="home/addDrink.php" method="post">
-				<div>Bieranzahl: </div>
-				<input class="drink-input ml-1" type="number" name="nickName" value="1">
 				<input type="hidden" name="type" value="BEER">
 				<input class="drink-button" type="submit" value="Bier Hinzufügen">
 			</form>
 			<form class="d-flex gap-1 flex-column flex-md-row" action="home/addDrink.php" method="post">
-				<div>Saufpartieanzahl: </div>
-				<input class="drink-input ml-1" type="number" name="nickName" value="1">
 				<input type="hidden" name="type" value="ALL_YOU_CAN_DRINK">
 				<input class="drink-button" type="submit" value="Saufpartie Hinzufügen">
 			</form>
