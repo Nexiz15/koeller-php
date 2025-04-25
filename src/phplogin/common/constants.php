@@ -1,0 +1,4 @@
+<?php
+$BEER_PRICE = 1.5;
+$ALL_YOU_CAN_DRINK_PRICE = 15;
+?>

@@ -1,9 +1,9 @@
 <?php
-require 'config/db_config.php';
+require_once '../common/config.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
+	header('Location: ../index.html');
 	exit;
 }
 
@@ -23,56 +23,29 @@ $stmt->close();
 <html>
 
 <head>
-	<?php include 'meta.php'; ?>
+	<?php include '../common/meta.php'; ?>
 </head>
 
 <body class="loggedin">
-	<?php include 'header.php'; ?>
+	<?php include '../common/header.php'; ?>
 	<div class="container">
 		<h2 class="mb-4">Profil bearbeiten</h2>
 		<div class="mb-4">
 			<h4>Spitzname ändern</h4>
-			<p class="text-description">Name für Willkommensseite</p>
+			<p class="text-description">Name für Willkommensseite und Getränkeliste</p>
 			<form class="d-flex gap-1 flex-column flex-md-row" action="updateNickname.php" method="post">
-				<input class="password-input" type="text" name="nickName" placeholder="Neuer Spitzname">
-				<input class="password-button" type="submit" value="Ändern">
+				<input class="basic-input" type="text" name="nickName" placeholder="Neuer Spitzname">
+				<input class="basic-button" type="submit" value="Ändern">
 			</form>
 		</div>
 		<div class="mb-4">
 			<h4>Passwort ändern</h4>
 			<form class="d-flex gap-1 flex-column flex-md-row" action="updatePassword.php" method="post">
-				<input class="password-input" type="text" name="password" placeholder="Neues Passwort" required>
-				<input class="password-button" type="submit" value="Ändern">
+				<input class="basic-input" type="text" name="password" placeholder="Neues Passwort" required>
+				<input class="basic-button" type="submit" value="Ändern">
 			</form>
 		</div>
 	</div>
 </body>
 
 </html>
-<style>
-	.password-input {
-		border: none;
-		outline: none;
-		border-bottom: 1px solid #05212a;
-		margin-bottom: 10px;
-		margin-right: 25px;
-		border-radius: 0;
-	}
-
-	.password-button {
-		border: none;
-		height: 35px;
-		background-color: #05212a;
-		color: white;
-		border-radius: 8px;
-		padding: 0 20px 0 20px;
-
-		&:hover {
-			cursor: pointer;
-		}
-	}
-
-	.text-description {
-		font-style: italic;
-	}
-</style>

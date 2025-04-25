@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <link href="bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="style/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="style/global.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="assets/logo.png">
 
@@ -24,13 +25,13 @@
 <body>
     <div class="login">
         <div class="login-content">
-            <h2 class="w-100 text-center">Login</h1>
-                <form action="authenticate.php" method="post">
+            <h2 class="w-100 text-center">Login</h2>
+                <form action="common/authenticate.php" method="post">
                     <input id="username" class="login-element" type="text" name="username" placeholder="Username"
                         required>
                     <input id="password" class="login-element" type="password" name="password" placeholder="Passwort"
                         required>
-                    <div id="wrongPaswordNotification">Falscher Username/Passwort</div>
+                    <div id="wrongPaswordNotification" class="error-notification">Falscher Username/Passwort</div>
                     <input class="w-100 login-button" type="submit" value="Login">
                 </form>
         </div>
@@ -85,8 +86,6 @@
 
     #wrongPaswordNotification {
         display: none;
-        color: red;
-        font-weight: bold;
     }
 
     .login-button {

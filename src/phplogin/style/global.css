@@ -1,0 +1,38 @@
+.error-notification {
+    color: red;
+    font-weight: bold;
+}
+
+.basic-link {
+    text-decoration: none;
+}
+
+.basic-link:hover {
+    text-decoration: underline;
+}
+
+.basic-input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #05212a;
+    margin-bottom: 10px;
+    margin-right: 25px;
+    border-radius: 0;
+}
+
+.basic-button {
+    border: none;
+    height: 35px;
+    background-color: #05212a;
+    color: white;
+    border-radius: 8px;
+    padding: 0 20px 0 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.text-description {
+    font-style: italic;
+}

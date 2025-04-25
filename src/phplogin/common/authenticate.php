@@ -1,8 +1,7 @@
 <?php
-include 'config/db_config.php';
+include 'config.php';
 
 session_start();
-
 
 $con = mysqli_connect($GLOBALS['DATABASE_HOST'], $GLOBALS['DATABASE_USER'], $GLOBALS['DATABASE_PASS'], $GLOBALS['DATABASE_NAME']);
 if (mysqli_connect_errno()) {
@@ -29,14 +28,14 @@ if ($userQuery = $con->prepare('SELECT id, nick_name, password FROM users WHERE 
 			$_SESSION['id'] = $id;
 			$_SESSION['username'] = $_POST['username'];
 			$_SESSION['nickName'] = $nickName;
-			header('Location: home.php');
+			header('Location: ../home/home.php');
 		} else {
-			header('Location: index.html?wrongPasword=true');
+			header('Location: ../index.html?wrongPasword=true');
 			$userQuery->close();
 			exit;
 		}
 	} else {
-		header('Location: index.html?wrongPasword=true');
+		header('Location: ../index.html?wrongPasword=true');
 		$userQuery->close();
 		exit;
 	}

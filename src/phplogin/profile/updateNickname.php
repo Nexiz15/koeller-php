@@ -1,9 +1,9 @@
 <?php
-require 'config/db_config.php';
+require_once '../common/config.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
+	header('Location: ../index.html');
 	exit;
 }
 
@@ -30,11 +30,11 @@ $con->close();
 <html>
 
 <head>
-	<?php include 'meta.php'; ?>
+	<?php include '../common/meta.php'; ?>
 </head>
 
 <body class="loggedin">
-	<?php include 'header.php'; ?>
+	<?php include '../common/header.php'; ?>
 	<div class="container">
 		<?php if ($success): ?>
 			<h2>Spitzname erfolgreich geändert</h2>

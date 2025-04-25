@@ -1,5 +1,6 @@
 <?php
-require 'config/db_config.php';
+require_once '../common/config.php';
+require_once '../common/utils.php';
 
 $con = mysqli_connect($GLOBALS['DATABASE_HOST'], $GLOBALS['DATABASE_USER'], $GLOBALS['DATABASE_PASS'], $GLOBALS['DATABASE_NAME']);
 if (mysqli_connect_errno()) {
@@ -13,11 +14,12 @@ $sql = "SELECT
               date_time
            FROM payment_change_log
            INNER JOIN users ON users.id = payment_change_log.user_id
-           ORDER BY date_time DESC;";
+           ORDER BY date_time DESC
+           LIMIT 15;";
 $select = mysqli_query($con, $sql);
 $num_rows = mysqli_num_rows($select);
 
-echo "<table>
+echo "<table class='table'>
 <tr>
     <th class='drink-heading'>User</th>
     <th class='drink-heading'>Datum</th>
@@ -27,47 +29,13 @@ if ($num_rows > 0) {
 
     while ($rows = mysqli_fetch_array($select, MYSQLI_ASSOC)) {
         echo "<tr>";
-        echo "<td>" . mapUsername($rows['nick_name'], $rows['first_name'], $rows['last_name']) . "</td>";
-        echo "<td>" . formatDate($rows['date_time']) . "</td>";
-        echo "<td>" . $rows['amount'] . "</td>";
+        echo "<td class='align-middle'>" . mapUsername($rows['nick_name'], $rows['first_name'], $rows['last_name']) . "</td>";
+        echo "<td class='align-middle'>" . formatDate($rows['date_time']) . "</td>";
+        echo "<td class='align-middle'>" . $rows['amount'] . " €</td>";
         echo "</tr>";
     }
 }
 echo "</table>";
 
-function formatDate($date)
-{
-    $parsedDate = date_create($date);
-    return date_format($parsedDate, "H:i d.m.Y");
-}
-
 mysqli_close($con);
 ?>
-
-<style>
-	.password-input {
-		border: none;
-		outline: none;
-		border-bottom: 1px solid #05212a;
-		margin-bottom: 10px;
-		margin-right: 25px;
-		border-radius: 0;
-	}
-
-	.password-button {
-		border: none;
-		height: 35px;
-		background-color: #05212a;
-		color: white;
-		border-radius: 8px;
-		padding: 0 20px 0 20px;
-
-		&:hover {
-			cursor: pointer;
-		}
-	}
-
-	.text-description {
-		font-style: italic;
-	}
-</style>

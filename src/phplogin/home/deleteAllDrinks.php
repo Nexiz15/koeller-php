@@ -1,10 +1,12 @@
 <?php
-require '../config/db_config.php';
+require_once '../common/config.php';
+require_once '../common/utils.php';
+require_once '../common/constants.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
-	exit;
+    header('Location: ../index.html');
+    exit;
 }
 
 $con = mysqli_connect($GLOBALS['DATABASE_HOST'], $GLOBALS['DATABASE_USER'], $GLOBALS['DATABASE_PASS'], $GLOBALS['DATABASE_NAME']);
@@ -15,10 +17,10 @@ if (mysqli_connect_errno()) {
 $userId = $_SESSION['id'];
 
 $sql = "SELECT
-               SUM(
+                SUM(
                    CASE
-                       WHEN drink_type = 'BEER' THEN 1.5
-                       WHEN drink_type = 'ALL_YOU_CAN_DRINK' THEN 15
+                       WHEN drink_type = 'BEER' THEN 'BEER_PRICE'
+                       WHEN drink_type = 'ALL_YOU_CAN_DRINK' THEN '$ALL_YOU_CAN_DRINK_PRICE'
                        ELSE 0
                    END
                ) AS total_debt
@@ -27,7 +29,7 @@ $sql = "SELECT
            GROUP BY user_id;";
 $select = mysqli_query($con, $sql);
 
-if($select) {
+if ($select) {
     $row = mysqli_fetch_assoc($select);
 
     if ($row && $row['total_debt'] > 0) {
@@ -37,22 +39,12 @@ if($select) {
 
 $sql = "DELETE FROM drinks WHERE user_id = '$userId'";
 if (mysqli_query($con, $sql)) {
-    header('Location: ../home.php?deleteDrinksSuccess=true');
+    header('Location: home.php');
     mysqli_close($con);
     exit;
 } else {
-    header('Location: ../home.php?deleteDrinksError=true');
+    header('Location: home.php?deleteDrinksError=true');
     mysqli_close($con);
     exit;
 }
 
-function addPaymentEntry($amount, $con, $userId) {
-    $currentDateTime = (new DateTime("now", new DateTimeZone('Europe/Vienna')))->format('Y-m-d H:i:s');
-    $insertQuery = "INSERT INTO payment_change_log (user_id, amount, date_time) VALUES ('$userId', '$amount', '$currentDateTime')";
-
-    if (!mysqli_query($con, $insertQuery)) {
-        header('Location: ../home.php?deleteDrinksError=true');
-        mysqli_close($con);
-        exit;
-    }
-}
