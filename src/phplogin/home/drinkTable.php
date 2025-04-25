@@ -23,8 +23,9 @@ if ($num_rows > 0) {
         echo "<td>" . mapDrinkType($rows['drink_type']) . "</td>";
         echo "<td>" . formatDate($rows['date_time']) . "</td>";
         echo "<td>
-            <form class="d-flex gap-1 flex-column flex-md-row" action="home/deleteSingleDrink.php" method="post">
-            				<input class="drink-button" type="submit" value="Alle Getränke löschen">
+            <form class='d-flex gap-1 flex-column flex-md-row' action='home/deleteSingleDrink.php' method='post'>
+            				<input type='hidden' name='drinkId' value='" . $rows['id'] . "'>
+            				<input class='drink-button' type='submit' value='Löschen'>
             			</form>
             </td>";
         echo "</tr>";
@@ -47,7 +48,7 @@ function mapDrinkType($type)
 function formatDate($date)
 {
     $parsedDate = date_create($date);
-    return date_format($parsedDate, "H:i:s d.m.Y");
+    return date_format($parsedDate, "H:i d.m.Y");
 }
 
 mysqli_close($con);

@@ -1,41 +1,32 @@
 <?php
 require '../config/db_config.php';
-
 session_start();
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
-	exit;
-}
-
 $con = mysqli_connect($GLOBALS['DATABASE_HOST'], $GLOBALS['DATABASE_USER'], $GLOBALS['DATABASE_PASS'], $GLOBALS['DATABASE_NAME']);
 if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
+if (!isset($_POST['drinkId'])) {
+	$userQuery->close();
+	exit('Please fill drinkId!');
+}
+$id = $_POST['drinkId'];
 $userId = $_SESSION['id'];
 
-$sql = "SELECT
-               SUM(
-                   CASE
-                       WHEN drink_type = 'BEER' THEN 1.5
-                       WHEN drink_type = 'ALL_YOU_CAN_DRINK' THEN 15
-                       ELSE 0
-                   END
-               ) AS total_debt
-           FROM drinks
-           INNER JOIN users ON users.id = drinks.user_id
-           GROUP BY user_id;";
+$sql = "SELECT drink_type FROM drinks WHERE id = '$id' and user_id = '$userId'";
 $select = mysqli_query($con, $sql);
 
 if($select) {
     $row = mysqli_fetch_assoc($select);
 
-    if ($row && $row['total_debt'] > 0) {
-        addPaymentEntry($row['total_debt'], $con, $userId);
+    if ($row && $row['drink_type'] == 'BEER') {
+        addPaymentEntry(1.5, $con, $userId);
+    } else if ($row && $row['drink_type'] == 'ALL_YOU_CAN_DRINK') {
+        addPaymentEntry(15, $con, $userId);
     }
 }
 
-$sql = "DELETE FROM drinks WHERE user_id = '$userId'";
+$sql = "DELETE FROM drinks WHERE id = '$id'";
 if (mysqli_query($con, $sql)) {
     header('Location: ../home.php?deleteDrinksSuccess=true');
     mysqli_close($con);

@@ -9,42 +9,36 @@ $sql = "SELECT
               users.nick_name as nick_name,
               users.first_name as first_name,
               users.last_name as last_name,
-               SUM(
-                   CASE
-                       WHEN drink_type = 'BEER' THEN 1.5
-                       WHEN drink_type = 'ALL_YOU_CAN_DRINK' THEN 15
-                       ELSE 0
-                   END
-               ) AS total_debt
-           FROM drinks
-           INNER JOIN users ON users.id = drinks.user_id
-           GROUP BY user_id;";
+              amount,
+              date_time
+           FROM payment_change_log
+           INNER JOIN users ON users.id = payment_change_log.user_id
+           ORDER BY date_time DESC;";
 $select = mysqli_query($con, $sql);
 $num_rows = mysqli_num_rows($select);
 
 echo "<table>
 <tr>
-<th class='drink-heading'>User</th>
-<th class='drink-heading'>Offener Betrag</th>
+    <th class='drink-heading'>User</th>
+    <th class='drink-heading'>Datum</th>
+    <th class='drink-heading'>Betrag</th>
 </tr>";
 if ($num_rows > 0) {
 
     while ($rows = mysqli_fetch_array($select, MYSQLI_ASSOC)) {
         echo "<tr>";
-        echo "<td>" . mapDrinkType($rows['nick_name'], $rows['first_name'], $rows['last_name']) . "</td>";
-        echo "<td>" . $rows['total_debt'] . " €</td>";
+        echo "<td>" . mapUsername($rows['nick_name'], $rows['first_name'], $rows['last_name']) . "</td>";
+        echo "<td>" . formatDate($rows['date_time']) . "</td>";
+        echo "<td>" . $rows['amount'] . "</td>";
         echo "</tr>";
     }
 }
 echo "</table>";
 
-function mapDrinkType($nick_name, $first_name, $last_name)
+function formatDate($date)
 {
-    if ($nick_name == null) {
-        return "$first_name $last_name";
-    } else {
-        return "$nick_name ($first_name $last_name)";
-    }
+    $parsedDate = date_create($date);
+    return date_format($parsedDate, "H:i d.m.Y");
 }
 
 mysqli_close($con);

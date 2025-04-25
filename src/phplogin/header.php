@@ -5,7 +5,7 @@
 				<img src="assets/logo.png" alt="logo" class="logo" />
 			</a>
 			<div>
-				<a class="navtopLink mr-3" href="allDrinks.php"><i class="mr-1 fa-solid fa-wine-bottle"></i>Alle Getränke</a>
+				<a class="navtopLink mr-3" href="drinksList.php"><i class="mr-1 fa-solid fa-wine-bottle"></i>Getränkeliste</a>
 				<a class="navtopLink mr-3" href="profile.php"><i class="mr-1 fa-solid fa-user"></i>Profil</a>
 				<a class="navtopLink" href="logout.php"><i class="mr-1 fas fa-sign-out-alt"></i>Logout</a>
 			</div>

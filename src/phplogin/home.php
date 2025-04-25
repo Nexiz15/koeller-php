@@ -25,11 +25,11 @@ if (!isset($_SESSION['loggedin'])) {
 			<h4>Getränk hinzufügen</h4>
 			<form class="d-flex gap-1 flex-column flex-md-row mb-3" action="home/addDrink.php" method="post">
 				<input type="hidden" name="type" value="BEER">
-				<input class="drink-button" type="submit" value="Bier Hinzufügen">
+				<input class="drink-button" type="submit" value="Bier Hinzufügen (1.50 €)">
 			</form>
 			<form class="d-flex gap-1 flex-column flex-md-row" action="home/addDrink.php" method="post">
 				<input type="hidden" name="type" value="ALL_YOU_CAN_DRINK">
-				<input class="drink-button" type="submit" value="Saufpartie Hinzufügen">
+				<input class="drink-button" type="submit" value="Saufpartie Hinzufügen (15 €)">
 			</form>
 		</div>
 		<div class="mb-4">
