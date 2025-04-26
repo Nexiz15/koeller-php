@@ -3,8 +3,8 @@ require_once '../common/config.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: ../index.html');
-	exit;
+    header('Location: ../index.html');
+    exit;
 }
 
 if ($_POST['type'] != 'BEER' && $_POST['type'] != 'ALL_YOU_CAN_DRINK') {

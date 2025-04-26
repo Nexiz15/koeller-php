@@ -14,7 +14,8 @@ function formatDate($date)
     return date_format($parsedDate, "d.m.Y H:i");
 }
 
-function addPaymentEntry($amount, $con, $userId) {
+function addPaymentEntry($amount, $con, $userId)
+{
     $currentDateTime = (new DateTime("now", new DateTimeZone('Europe/Vienna')))->format('Y-m-d H:i:s');
     $insertQuery = "INSERT INTO payment_change_log (user_id, amount, date_time) VALUES ('$userId', '$amount', '$currentDateTime')";
 
@@ -36,4 +37,5 @@ function mapDrinkType($type)
             return 'FALSCHER WERT';
     }
 }
+
 ?>

@@ -10,8 +10,8 @@ if (mysqli_connect_errno()) {
 }
 
 if (!isset($_POST['drinkId'])) {
-	$userQuery->close();
-	exit('Please fill drinkId!');
+    $con->close();
+    exit('Please fill drinkId!');
 }
 $id = $_POST['drinkId'];
 $userId = $_SESSION['id'];
@@ -19,7 +19,7 @@ $userId = $_SESSION['id'];
 $sql = "SELECT drink_type FROM drinks WHERE id = '$id' and user_id = '$userId'";
 $select = mysqli_query($con, $sql);
 
-if($select) {
+if ($select) {
     $row = mysqli_fetch_assoc($select);
 
     if ($row && $row['drink_type'] == 'BEER') {

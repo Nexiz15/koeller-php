@@ -4,7 +4,7 @@ require_once '../common/utils.php';
 
 $con = mysqli_connect($GLOBALS['DATABASE_HOST'], $GLOBALS['DATABASE_USER'], $GLOBALS['DATABASE_PASS'], $GLOBALS['DATABASE_NAME']);
 if (mysqli_connect_errno()) {
-	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+    exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 $sql = "SELECT
               users.nick_name as nick_name,

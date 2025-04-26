@@ -31,7 +31,7 @@ if ($num_rows > 0) {
                             <input class='basic-button' type='submit' value='Bezahlen'>
                         </form>
             </td>";
-    echo "</tr>";
+        echo "</tr>";
     }
     echo "</table>";
     echo "</div>";
