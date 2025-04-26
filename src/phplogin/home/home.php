@@ -41,7 +41,7 @@ if (!isset($_SESSION['loggedin'])) {
 		</div>
         <?php
             if (isset($_GET['deleteDrinksError'])) {
-                echo '<div class="error-notification">Fehler beim Löschen eines Getränkes</div>';
+                echo '<div class="error-notification">Fehler beim Bezahlen eines Getränkes</div>';
             }
         ?>
 		<div class="mb-4">
@@ -49,7 +49,7 @@ if (!isset($_SESSION['loggedin'])) {
 		</div>
 		<div class="mb-5">
 			<form class="d-flex gap-1 flex-column flex-md-row" action="deleteAllDrinks.php" method="post">
-				<input class="basic-button" type="submit" value="Alle Getränke löschen">
+				<input class="basic-button" type="submit" value="Alle Getränke bezahlen">
 			</form>
 		</div>
 	</div>

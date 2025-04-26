@@ -19,7 +19,7 @@ $userId = $_SESSION['id'];
 $sql = "SELECT
                 SUM(
                    CASE
-                       WHEN drink_type = 'BEER' THEN 'BEER_PRICE'
+                       WHEN drink_type = 'BEER' THEN '$BEER_PRICE'
                        WHEN drink_type = 'ALL_YOU_CAN_DRINK' THEN '$ALL_YOU_CAN_DRINK_PRICE'
                        ELSE 0
                    END

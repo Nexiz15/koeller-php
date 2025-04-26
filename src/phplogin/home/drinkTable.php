@@ -27,7 +27,7 @@ if ($num_rows > 0) {
         echo "<td class='align-middle'>
             <form class='d-flex gap-1 flex-column flex-md-row' action='deleteSingleDrink.php' method='post'>
             				<input type='hidden' name='drinkId' value='" . $rows['id'] . "'>
-            				<input class='basic-button' type='submit' value='Löschen'>
+            				<input class='basic-button' type='submit' value='Bezahlen'>
             			</form>
             </td>";
         echo "</tr>";

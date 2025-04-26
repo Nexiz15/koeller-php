@@ -15,7 +15,7 @@ $sql = "SELECT
            FROM payment_change_log
            INNER JOIN users ON users.id = payment_change_log.user_id
            ORDER BY date_time DESC
-           LIMIT 15;";
+           LIMIT 10;";
 $select = mysqli_query($con, $sql);
 $num_rows = mysqli_num_rows($select);
 
