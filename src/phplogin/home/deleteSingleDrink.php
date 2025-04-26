@@ -35,7 +35,7 @@ if (mysqli_query($con, $sql)) {
     mysqli_close($con);
     exit;
 } else {
-    header('Location: home.php?deleteDrinksError=true');
+    header('Location: home.php?error=true');
     mysqli_close($con);
     exit;
 }

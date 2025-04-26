@@ -8,7 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 if ($_POST['type'] != 'BEER' && $_POST['type'] != 'ALL_YOU_CAN_DRINK') {
-    header('Location: home.php?addDrinkError=true');
+    header('Location: home.php?error=true');
     exit;
 }
 $drink_type = $_POST['type'];
@@ -26,7 +26,7 @@ if (mysqli_query($con, $sql)) {
     mysqli_close($con);
     exit;
 } else {
-    header('Location: home.php?addDrinkError=true');
+    header('Location: home.php?error=true');
     mysqli_close($con);
     exit;
 }

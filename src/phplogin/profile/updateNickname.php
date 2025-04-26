@@ -7,7 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 
-$success = false;
 
 $con = mysqli_connect($GLOBALS['DATABASE_HOST'], $GLOBALS['DATABASE_USER'], $GLOBALS['DATABASE_PASS'], $GLOBALS['DATABASE_NAME']);
 if (mysqli_connect_errno()) {
@@ -18,31 +17,12 @@ $nickName = $_POST['nickName'];
 $userId = $_SESSION['id'];
 $sql = "UPDATE users SET nick_name='$nickName' WHERE id='$userId'";
 if (mysqli_query($con, $sql)) {
-	$success = true;
+	header('Location: profile.php?nickNameUpdateSuccess=true');
 	$_SESSION['nickName'] = $nickName;
+} else {
+    header('Location: profile.php?error=true');
 }
 
 $con->close();
 
 ?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-	<?php include '../common/meta.php'; ?>
-</head>
-
-<body class="loggedin">
-	<?php include '../common/header.php'; ?>
-	<div class="container">
-		<?php if ($success): ?>
-			<h2>Spitzname erfolgreich geändert</h2>
-		<?php else: ?>
-			<h2>Spitzname konnte nicht geändert werden</h2>
-		<?php endif; ?>
-	</div>
-
-</body>
-
-</html>

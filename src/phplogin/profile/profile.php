@@ -30,6 +30,14 @@ $stmt->close();
 	<?php include '../common/header.php'; ?>
 	<div class="container">
 		<h2 class="mb-4">Profil bearbeiten</h2>
+		<?php include '../common/error.php'; ?>
+		<?php
+            if (isset($_GET['passwordUpdateSuccess'])) {
+                echo '<div class="success-notification">Passwort erfolgreich geändert</div>';
+            } else if (isset($_GET['nickNameUpdateSuccess'])) {
+                echo '<div class="success-notification">Spitzname erfolgreich geändert</div>';
+            }
+        ?>
 		<div class="mb-4">
 			<h4>Spitzname ändern</h4>
 			<p class="text-description">Name für Willkommensseite und Getränkeliste</p>

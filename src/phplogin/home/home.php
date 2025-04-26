@@ -21,11 +21,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<h2 class="mb-4">Hallo
 			<?= array_key_exists('nickName', $_SESSION) && $_SESSION['nickName'] != '' ? $_SESSION['nickName'] : $_SESSION['username'] ?>
 		</h2>
-        <?php
-            if (isset($_GET['addDrinkError'])) {
-                echo '<div class="error-notification">Fehler beim Hinzufügen eines Getränkes</div>';
-            }
-        ?>
+        <?php include '../common/error.php'; ?>
 		<div class="mb-5">
 			<h4>Getränk hinzufügen</h4>
 			<div class='d-flex gap-3 flex-column flex-md-row'>

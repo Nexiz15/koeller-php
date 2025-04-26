@@ -1,6 +1,19 @@
 .error-notification {
     color: red;
     font-weight: bold;
+    background-color: #ff000030;
+    padding: 7px;
+    border-radius: 8px;
+    margin: 10px 0 10px 0;
+}
+
+.success-notification {
+    color: green;
+    font-weight: bold;
+    background-color: #00800030;
+    padding: 7px;
+    border-radius: 8px;
+    margin: 10px 0 10px 0;
 }
 
 .basic-link {
