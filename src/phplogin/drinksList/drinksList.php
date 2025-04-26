@@ -1,5 +1,6 @@
 <?php
 require_once '../common/config.php';
+require_once '../common/constants.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
