@@ -19,7 +19,7 @@ if (!isset($_SESSION['loggedin'])) {
 	<?php include '../common/header.php'; ?>
 	<div class="container">
 		<h2 class="mb-4">Hallo
-			<?= array_key_exists('nickName', $_SESSION) && $_SESSION['nickName'] != '' ? $_SESSION['nickName'] : $_SESSION['username'] ?>
+			<?= array_key_exists('nickName', $_SESSION) && $_SESSION['nickName'] != '' ? $_SESSION['nickName'] : $_SESSION['firstName'] ?>
 		</h2>
         <?php include '../common/error.php'; ?>
 		<div class="mb-5">

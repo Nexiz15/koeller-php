@@ -21,7 +21,7 @@ $sql = "SELECT
            FROM users
            LEFT JOIN drinks ON users.id = drinks.user_id
            GROUP BY users.id
-           ORDER BY nick_name, first_name, last_name;";
+           ORDER BY first_name, last_name;";
 $select = mysqli_query($con, $sql);
 $num_rows = mysqli_num_rows($select);
 
