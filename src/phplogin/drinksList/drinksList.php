@@ -19,7 +19,12 @@ if (!isset($_SESSION['loggedin'])) {
 <?php include '../common/header.php'; ?>
 <div class="container">
     <h4>Alle Getränke</h4>
-    <p class="text-description mb-0">Liste mit allen Personen und deren offenen Getränke</p>
+    <div class="d-flex justify-content-between">
+        <p class="text-description mb-0">Liste mit allen Personen und deren offenen Getränke</p>
+        <form class="d-none d-md-block" action="downloadDrinksList.php" method="post">
+            <input class="basic-button" type="submit" value="CSV Datei erstellen">
+        </form>
+    </div>
     <div class="mb-5">
         <?php include 'drinksListTable.php'; ?>
     </div>
