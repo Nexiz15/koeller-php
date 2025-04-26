@@ -31,7 +31,7 @@ if($select) {
 
 $sql = "DELETE FROM drinks WHERE id = '$id'";
 if (mysqli_query($con, $sql)) {
-    header('Location: home.php?deleteDrinksSuccess=true');
+    header('Location: home.php');
     mysqli_close($con);
     exit;
 } else {

@@ -31,11 +31,19 @@ if (!isset($_SESSION['loggedin'])) {
 			<div class='d-flex gap-3 flex-column flex-md-row'>
                 <form class="d-flex gap-1 flex-column flex-md-row mb-3" action="addDrink.php" method="post">
                     <input type="hidden" name="type" value="BEER">
-                    <input class="basic-button" type="submit" value="Bier Hinzufügen (1.50 €)">
+                    <input
+                        class="basic-button"
+                        type="submit"
+                        value="Bier Hinzufügen (<?php require_once '../common/constants.php'; echo $BEER_PRICE; ?> €)"
+                    >
                 </form>
                 <form class="d-flex gap-1 flex-column flex-md-row" action="addDrink.php" method="post">
                     <input type="hidden" name="type" value="ALL_YOU_CAN_DRINK">
-                    <input class="basic-button" type="submit" value="Saufpartie Hinzufügen (15 €)">
+                    <input
+                        class="basic-button"
+                        type="submit"
+                        value="Saufpartie Hinzufügen (<?php require_once '../common/constants.php'; echo $ALL_YOU_CAN_DRINK_PRICE; ?> €)"
+                    >
                 </form>
                 </div>
 		</div>
@@ -44,14 +52,7 @@ if (!isset($_SESSION['loggedin'])) {
                 echo '<div class="error-notification">Fehler beim Bezahlen eines Getränkes</div>';
             }
         ?>
-		<div class="mb-4">
-			<?php include 'drinkTable.php'; ?>
-		</div>
-		<div class="mb-5">
-			<form class="d-flex gap-1 flex-column flex-md-row" action="deleteAllDrinks.php" method="post">
-				<input class="basic-button" type="submit" value="Alle Getränke bezahlen">
-			</form>
-		</div>
+		<?php include 'drinkTable.php'; ?>
 	</div>
 </body>
 

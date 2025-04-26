@@ -11,7 +11,7 @@ function mapUsername($nick_name, $first_name, $last_name)
 function formatDate($date)
 {
     $parsedDate = date_create($date);
-    return date_format($parsedDate, "H:i d.m.Y");
+    return date_format($parsedDate, "d.m.Y H:i");
 }
 
 function addPaymentEntry($amount, $con, $userId) {
