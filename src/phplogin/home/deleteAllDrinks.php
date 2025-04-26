@@ -24,8 +24,9 @@ $sql = "SELECT
                        ELSE 0
                    END
                ) AS total_debt
-           FROM drinks
-           INNER JOIN users ON users.id = drinks.user_id
+           FROM users
+           INNER JOIN drinks ON users.id = drinks.user_id
+           WHERE users.id = '$userId'
            GROUP BY user_id;";
 $select = mysqli_query($con, $sql);
 
