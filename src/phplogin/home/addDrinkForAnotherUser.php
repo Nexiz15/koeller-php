@@ -18,11 +18,20 @@ if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
-$userId = $_SESSION['id'];
+$formUserId = $_POST['user_id'];
+$currentUserId = $_SESSION['id'];
 $currentDateTime = (new DateTime("now", new DateTimeZone('Europe/Vienna')))->format('Y-m-d H:i:s');
-$sql = "INSERT INTO drinks (user_id, drink_type, date_time) VALUES ('$userId', '$drink_type', '$currentDateTime')";
+$amount = $_POST['amount'];
+
+$values = [];
+for ($i = 0; $i < $amount; $i++) {
+    $values[] = "('$formUserId', '$drink_type', '$currentDateTime', '$currentUserId')";
+}
+
+$sql = "INSERT INTO drinks (user_id, drink_type, date_time, added_by) VALUES " . implode(", ", $values);
+
 if (mysqli_query($con, $sql)) {
-    header('Location: home.php?success=true');
+    header('Location: home.php?collapsed=true&success=true');
     mysqli_close($con);
     exit;
 } else {

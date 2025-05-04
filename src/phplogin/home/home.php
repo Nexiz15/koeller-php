@@ -22,6 +22,11 @@ if (!isset($_SESSION['loggedin'])) {
         <?= array_key_exists('nickName', $_SESSION) && $_SESSION['nickName'] != '' ? $_SESSION['nickName'] : $_SESSION['firstName'] ?>
     </h2>
     <?php include '../common/error.php'; ?>
+    <?php
+    if (isset($_GET['success'])) {
+        echo '<div class="success-notification">Erfolgreich hinzugefügt</div>';
+    }
+    ?>
     <div class="mb-5">
         <h4>Getränk hinzufügen</h4>
         <div class='d-flex gap-3 flex-column flex-md-row'>
@@ -34,7 +39,7 @@ if (!isset($_SESSION['loggedin'])) {
                         echo $BEER_PRICE; ?> €)"
                 >
             </form>
-            <form class="d-flex gap-1 flex-column flex-md-row" action="addDrink.php" method="post">
+            <form class="d-flex gap-1 flex-column flex-md-row mb-3" action="addDrink.php" method="post">
                 <input type="hidden" name="type" value="ALL_YOU_CAN_DRINK">
                 <input
                         class="basic-button"
@@ -43,6 +48,9 @@ if (!isset($_SESSION['loggedin'])) {
                         echo $ALL_YOU_CAN_DRINK_PRICE; ?> €)"
                 >
             </form>
+        </div>
+        <div class="mt-3">
+            <?php include 'addDrinkForAnotherUserCollapsible.php'; ?>
         </div>
     </div>
     <?php

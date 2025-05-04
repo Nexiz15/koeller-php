@@ -7,7 +7,23 @@ if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 $userId = $_SESSION['id'];
-$sql = "SELECT id, drink_type, date_time FROM drinks WHERE user_id = '$userId'";
+$sql = "SELECT
+            drinks.id,
+            drinks.drink_type,
+            drinks.date_time,
+            added_by_someone.first_name as added_by_first_name,
+            added_by_someone.last_name as added_by_last_name,
+            added_for.first_name as added_for_first_name,
+            added_for.last_name as added_for_last_name,
+            CASE
+                WHEN drinks.added_by = '$userId' THEN true
+                ELSE false
+            END as added_for_someone
+            FROM drinks
+            LEFT JOIN users as added_by_someone on added_by_someone.id = drinks.added_by
+            LEFT JOIN users as added_for on added_for.id = drinks.user_id
+            WHERE drinks.user_id = '$userId' OR drinks.added_by = '$userId'
+            ORDER BY drinks.date_time DESC;";
 $select = mysqli_query($con, $sql);
 $num_rows = mysqli_num_rows($select);
 
@@ -23,7 +39,15 @@ if ($num_rows > 0) {
 
     while ($rows = mysqli_fetch_array($select, MYSQLI_ASSOC)) {
         echo "<tr>";
-        echo "<td class='align-middle'>" . mapDrinkType($rows['drink_type']) . "</td>";
+        echo "<td class='align-middle'>";
+        echo mapDrinkType($rows['drink_type']);
+        if ($rows['added_for_someone'] == false && isset($rows['added_by_first_name']) && isset($rows['added_by_last_name']) ) {
+            echo "<span class='added_by_information'> (von " . mapUsername("", $rows['added_by_first_name'], $rows['added_by_last_name']) . ")</span>";
+        }
+        if ($rows['added_for_someone'] == true && isset($rows['added_for_first_name']) && isset($rows['added_for_last_name']) ) {
+            echo "<span class='added_for_information'> (für " . mapUsername("", $rows['added_for_first_name'], $rows['added_for_last_name']) . ")</span>";
+        }
+        echo "</td>";
         echo "<td class='align-middle'>" . formatDate($rows['date_time']) . "</td>";
         echo "<td class='align-middle'>
             <form class='d-flex gap-1 flex-column flex-md-row' action='deleteSingleDrink.php' method='post'>
@@ -52,3 +76,14 @@ if ($num_rows > 0) {
 
 mysqli_close($con);
 ?>
+<style>
+    .added_by_information {
+        color: #dc3545;
+        font-weight: bold;
+    }
+
+    .added_for_information {
+        color: #05212a;
+        font-weight: bold;
+    }
+</style>

@@ -33,6 +33,16 @@
     border-radius: 0;
 }
 
+.basic-number-input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #05212a;
+    margin-bottom: 10px;
+    margin-right: 25px;
+    border-radius: 0;
+    width: 30px;
+}
+
 .basic-button {
     border: none;
     height: 35px;
@@ -86,4 +96,42 @@
 .tooltip-icon.left-edge .tooltip-text {
   left: 0;
   transform: translateX(0);
+}
+
+.expandable {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid #05212a;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.expandable-header {
+    padding: 8px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+.expandable-chevron {
+    transition: transform 0.3s ease;
+}
+
+.expandable.open .expandable-chevron {
+    transform: rotate(180deg);
+}
+
+.expandable-content-wrapper {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.expandable.open .expandable-content-wrapper {
+    opacity: 1;
 }
