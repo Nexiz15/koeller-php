@@ -70,8 +70,81 @@ echo "</table>";
 
 mysqli_close($con);
 ?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tooltipIcons = document.querySelectorAll('.tooltip-icon');
+
+    // Toggle visibility on click/tap (mobile)
+    tooltipIcons.forEach(icon => {
+        icon.addEventListener('click', function(event) {
+            const tooltip = event.currentTarget.querySelector('.tooltip-text');
+
+            // Toggle visibility on click/tap
+            if (tooltip.style.visibility === 'visible') {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = 0;
+            } else {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = 1;
+            }
+
+            // Stop event from propagating to document click event
+            event.stopPropagation();
+        });
+    });
+
+    // Close tooltip if the user clicks anywhere on the document
+    document.addEventListener('click', function() {
+        tooltipIcons.forEach(icon => {
+            const tooltip = icon.querySelector('.tooltip-text');
+            if (tooltip.style.visibility === 'visible') {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = 0;
+            }
+        });
+    });
+});
+</script>
 <style>
     .most-drinks-crown {
         color: #ffcc00;
+    }
+
+    .tooltip-icon {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      display: block;
+      max-width: 300px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px 10px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.8rem;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+
+    .tooltip-icon:hover .tooltip-text,
+    .tooltip-icon:focus .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .tooltip-icon.left-edge .tooltip-text {
+      left: 0;
+      transform: translateX(0);
     }
 </style>
