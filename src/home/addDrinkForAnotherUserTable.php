@@ -19,7 +19,7 @@ $sql = "SELECT
 $select = mysqli_query($con, $sql);
 $num_rows = mysqli_num_rows($select);
 
-echo "<table class='table'>
+echo "<table class='table expandable-table'>
 <tr>
 <th class='text-start text-md-start w-50'>User</th>
 <th class='text-end text-md-start w-50'>Getränk hinzufügen</th>
@@ -32,7 +32,7 @@ while ($rows = mysqli_fetch_array($select, MYSQLI_ASSOC)) {
     <td class='align-middle text-end text-md-start'>
         <form class='d-flex justify-content-end justify-content-md-start gap-1' action='addDrinkForAnotherUser.php' method='post'>
             <input type='hidden' name='user_id' value='". $rows['user_id'] ."'>
-            <input class='basic-number-input' type='number' name='amount' value='1'>
+            <input class='basic-input' type='number' name='amount' value='1'>
             <button class='basic-button' type='submit' name='type' value='BEER'>
                 Bier
             </button>

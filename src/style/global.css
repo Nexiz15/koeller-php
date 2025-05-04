@@ -33,16 +33,6 @@
     border-radius: 0;
 }
 
-.basic-number-input {
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #05212a;
-    margin-bottom: 10px;
-    margin-right: 25px;
-    border-radius: 0;
-    width: 30px;
-}
-
 .basic-button {
     border: none;
     height: 35px;
@@ -99,22 +89,25 @@
 }
 
 .expandable {
-    background-color: #fff;
     border-radius: 8px;
-    border: 2px solid #05212a;
     overflow: hidden;
     transition: box-shadow 0.3s ease;
 }
 
 .expandable-header {
-    padding: 8px 10px;
-    font-size: 18px;
-    font-weight: bold;
+    padding: 5px 20px 5px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    background-color: #ffffff;
+    background-color: #05212a;
+    color: white;
+}
+
+.expandable-header-text {
+    @media (max-width: 767px) {
+        margin: 0 auto;
+    }
 }
 
 .expandable-chevron {
@@ -134,4 +127,32 @@
 
 .expandable.open .expandable-content-wrapper {
     opacity: 1;
+}
+
+.expandable-content {
+    background-color: #ecf4f7;
+}
+
+.expandable-content-wrapper {
+    background-color: #ecf4f7;
+}
+
+.expandable-table {
+    background-color: #ecf4f7;
+}
+
+.expandable-table th,
+.expandable-table td {
+    background-color: #ecf4f7;
+}
+
+.expandable-content .basic-input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #05212a;
+    margin-bottom: 10px;
+    margin-right: 25px;
+    border-radius: 0;
+    width: 30px;
+    background-color: #ecf4f7;
 }

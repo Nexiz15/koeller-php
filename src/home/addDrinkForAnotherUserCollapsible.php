@@ -5,12 +5,13 @@ $expandableClass = $collapsed ? 'expandable open' : 'expandable';
 
 <div class="<?= $expandableClass ?>">
     <div class="expandable-header" onclick="toggleExpandable(this)">
-        Für andere User hinzufügen
+        <span class="expandable-header-text">Für andere User hinzufügen</span>
         <i class="expandable-chevron fa-solid fa-chevron-down"></i>
     </div>
     <div class="expandable-content-wrapper" style="<?= !$collapsed ? '' : 'max-height: none; opacity: 1;' ?>">
-        <div class="content">
+        <div class="expandable-content">
             <?php include 'addDrinkForAnotherUserTable.php'; ?>
+            <?php include 'drinkForAnotherUserTable.php'; ?>
         </div>
     </div>
 </div>
@@ -37,3 +38,32 @@ function toggleExpandable(headerEl) {
     }
 }
 </script>
+<style>
+    .expandable-content {
+        background-color: #ecf4f7;
+    }
+
+    .expandable-content-wrapper {
+        background-color: #ecf4f7;
+    }
+
+    .expandable-table {
+        background-color: #ecf4f7;
+    }
+
+    .expandable-table th,
+    .expandable-table td {
+        background-color: #ecf4f7;
+    }
+
+    .expandable-content .basic-input {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #05212a;
+        margin-bottom: 10px;
+        margin-right: 25px;
+        border-radius: 0;
+        width: 30px;
+        background-color: #ecf4f7;
+    }
+</style>
