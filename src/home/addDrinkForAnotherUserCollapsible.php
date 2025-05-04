@@ -39,6 +39,47 @@ function toggleExpandable(headerEl) {
 }
 </script>
 <style>
+    .expandable {
+        border-radius: 8px;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .expandable-header {
+        padding: 5px 20px 5px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background-color: #05212a;
+        color: white;
+    }
+
+    .expandable-header-text {
+        @media (max-width: 767px) {
+            margin: 0 auto;
+        }
+    }
+
+    .expandable-chevron {
+        transition: transform 0.3s ease;
+    }
+
+    .expandable.open .expandable-chevron {
+        transform: rotate(180deg);
+    }
+
+    .expandable-content-wrapper {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+
+    .expandable.open .expandable-content-wrapper {
+        opacity: 1;
+    }
+
     .expandable-content {
         background-color: #ecf4f7;
     }
