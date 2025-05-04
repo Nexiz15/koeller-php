@@ -25,19 +25,19 @@ if ($num_rows > 0) {
     echo "<h6 class='ms-2 mt-4'>Hinzugefügte Getränke</h6>";
     echo "<table class='table expandable-table'>
     <tr>
-    <th>Getränk</th>
-    <th>Datum</th>
+    <th class='text-start text-md-start w-50'>Getränk</th>
+    <th class='text-end text-md-start w-50'>Datum</th>
     </tr>";
 
     while ($rows = mysqli_fetch_array($select, MYSQLI_ASSOC)) {
         echo "<tr>";
-        echo "<td class='align-middle'>";
+        echo "<td class='align-middle text-start'>";
         echo mapDrinkType($rows['drink_type']);
         if (isset($rows['added_for_first_name']) && isset($rows['added_for_last_name']) ) {
             echo " (für " . mapUsername("", $rows['added_for_first_name'], $rows['added_for_last_name']) . ")";
         }
         echo "</td>";
-        echo "<td class='align-middle'>" . formatDate($rows['date_time']) . "</td>";
+        echo "<td class='align-middle text-end text-md-start'>" . formatDate($rows['date_time']) . "</td>";
         echo "</tr>";
     }
     echo "</table>";
