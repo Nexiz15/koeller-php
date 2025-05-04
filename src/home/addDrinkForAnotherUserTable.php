@@ -21,17 +21,16 @@ $num_rows = mysqli_num_rows($select);
 
 echo "<table class='table'>
 <tr>
-<th class='text-start'>User</th>
-<th class='text-end'>Getränk hinzufügen</th>
-<th />
+<th class='text-start text-md-start w-50'>User</th>
+<th class='text-end text-md-start w-50'>Getränk hinzufügen</th>
 </tr>";
 
 while ($rows = mysqli_fetch_array($select, MYSQLI_ASSOC)) {
     echo "<tr>";
-    echo "<td class='align-middle text-start'>" . mapUsername('', $rows['first_name'], $rows['last_name']) . "</td>";
+    echo "<td class='align-middle text-start text-md-start'>" . mapUsername('', $rows['first_name'], $rows['last_name']) . "</td>";
     echo "
-    <td class='align-middle text-end'>
-        <form class='d-flex justify-content-end gap-1' action='addDrinkForAnotherUser.php' method='post'>
+    <td class='align-middle text-end text-md-start'>
+        <form class='d-flex justify-content-end justify-content-md-start gap-1' action='addDrinkForAnotherUser.php' method='post'>
             <input type='hidden' name='user_id' value='". $rows['user_id'] ."'>
             <input class='basic-number-input' type='number' name='amount' value='1'>
             <button class='basic-button' type='submit' name='type' value='BEER'>
