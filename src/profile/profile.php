@@ -10,7 +10,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <?php include '../common/meta.php'; ?>

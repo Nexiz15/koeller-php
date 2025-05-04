@@ -27,7 +27,7 @@ echo "<table class='table expandable-table'>
 
 while ($rows = mysqli_fetch_array($select, MYSQLI_ASSOC)) {
     echo "<tr>";
-    echo "<td class='align-middle text-start text-md-start'>" . mapUsername('', $rows['first_name'], $rows['last_name']) . "</td>";
+    echo "<td class='align-middle text-start text-md-start text-break-word'>" . mapUsername('', $rows['first_name'], $rows['last_name']) . "</td>";
     echo "
     <td class='align-middle text-end text-md-start'>
         <form class='d-flex justify-content-end justify-content-md-start gap-1' action='addDrinkForAnotherUser.php' method='post'>

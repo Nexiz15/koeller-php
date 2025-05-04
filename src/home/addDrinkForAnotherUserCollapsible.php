@@ -107,4 +107,9 @@ function toggleExpandable(headerEl) {
         width: 30px;
         background-color: #ecf4f7;
     }
+
+    .text-break-word {
+        word-break: break-word;
+        hyphens: auto;
+    }
 </style>
