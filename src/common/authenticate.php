@@ -29,6 +29,9 @@ if ($userQuery = $con->prepare('SELECT id, nick_name, password, first_name, role
             $_SESSION['nickName'] = $nickName;
             $_SESSION['firstName'] = $firstName;
             $_SESSION['role'] = $role;
+            $currentDateTime = (new DateTime("now", new DateTimeZone('Europe/Vienna')))->format('Y-m-d H:i:s');
+            $updateLastLoginSql = "UPDATE users set last_login = '$currentDateTime' where id = '$id'";
+            mysqli_query($con, $updateLastLoginSql);
             header('Location: ../home/home.php');
         } else {
             header('Location: ../index.html?wrongPasword=true');
