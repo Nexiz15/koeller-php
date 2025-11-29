@@ -25,7 +25,7 @@ $sql = "SELECT COALESCE(drinks.total, 0) + COALESCE(payments.total, 0) as total
         LEFT JOIN (
             SELECT user_id, SUM(amount) as total
             FROM payment_change_log as payments
-            WHERE payments.date_time BETWEEN '2025-01-01' AND '2025-11-30'
+            WHERE payments.date_time BETWEEN '2025-01-01' AND '2025-11-29'
             GROUP BY user_id
         ) payments ON payments.user_id = users.id
         WHERE users.id = ?";
