@@ -49,6 +49,9 @@ if (!isset($_SESSION['loggedin'])) {
                 >
             </form>
         </div>
+        <div class="my-4">
+            <?php include 'wrapped2025Collapsible.php'; ?>
+        </div>
         <div class="mt-3">
             <?php include 'addDrinkForAnotherUserCollapsible.php'; ?>
         </div>
